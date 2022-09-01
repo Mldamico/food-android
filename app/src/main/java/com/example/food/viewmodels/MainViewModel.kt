@@ -1,4 +1,4 @@
-package com.example.food
+package com.example.food.viewmodels
 
 import android.app.Application
 import android.content.Context
