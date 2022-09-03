@@ -15,7 +15,7 @@ class RecipesAdapter : RecyclerView.Adapter<RecipesAdapter.MyViewHolder>() {
         RecyclerView.ViewHolder(binding.root) {
             fun bind(result: Result){
                 binding.result = result
-                binding.executePendingBindings( )
+                binding.executePendingBindings()
             }
         companion object {
             fun from(parent: ViewGroup):MyViewHolder{
