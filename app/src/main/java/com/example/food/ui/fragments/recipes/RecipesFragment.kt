@@ -52,13 +52,16 @@ class RecipesFragment : Fragment() {
 
 //        view.recyclerview.showShimmer()
         setupRecyclerView()
-        readDatabase()
+        recipesViewModel.readBackOnline.observe(viewLifecycleOwner) {
+            recipesViewModel.backOnline = it
+        }
         lifecycleScope.launch {
             networkListener = NetworkListener()
             networkListener.checkNetworkAvailability(requireContext()).collect {status ->
                 Log.d("NetworkListener", status.toString())
                 recipesViewModel.networkStatus = status
                 recipesViewModel.showNetworkStatus()
+                readDatabase()
             }
         }
 
