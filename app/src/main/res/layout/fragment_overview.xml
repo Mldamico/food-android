@@ -202,7 +202,7 @@
         app:layout_constraintTop_toTopOf="@+id/healthy_imageView" />
 
     <ImageView
-        android:id="@+id/chip_imageView"
+        android:id="@+id/cheap_imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
@@ -213,15 +213,15 @@
         app:layout_constraintTop_toBottomOf="@+id/healthy_imageView" />
 
     <TextView
-        android:id="@+id/chip_textView"
+        android:id="@+id/cheap_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="@string/chip"
+        android:text="@string/cheap"
         android:textColor="@color/darkGray"
-        app:layout_constraintBottom_toBottomOf="@+id/chip_imageView"
-        app:layout_constraintStart_toEndOf="@+id/chip_imageView"
-        app:layout_constraintTop_toTopOf="@+id/chip_imageView" />
+        app:layout_constraintBottom_toBottomOf="@+id/cheap_imageView"
+        app:layout_constraintStart_toEndOf="@+id/cheap_imageView"
+        app:layout_constraintTop_toTopOf="@+id/cheap_imageView" />
 
     <ScrollView
         android:layout_width="match_parent"
