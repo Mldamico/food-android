@@ -11,6 +11,7 @@ import com.example.food.adapters.PagerAdapter
 import com.example.food.ui.fragments.ingredients.IngredientsFragment
 import com.example.food.ui.fragments.instructions.InstructionsFragment
 import com.example.food.ui.fragments.overview.OverviewFragment
+import com.example.food.util.Constants
 import kotlinx.android.synthetic.main.activity_details.*
 
 class DetailsActivity : AppCompatActivity() {
@@ -33,7 +34,7 @@ class DetailsActivity : AppCompatActivity() {
         titles.add("Ingredients")
         titles.add("Instructions")
         val resultBundle = Bundle()
-        resultBundle.putParcelable("recipeBundle", args.result)
+        resultBundle.putParcelable(Constants.RECIPE_RESULT, args.result)
         val adapter = PagerAdapter(resultBundle, fragments, titles, supportFragmentManager)
 
         viewPager.adapter = adapter
