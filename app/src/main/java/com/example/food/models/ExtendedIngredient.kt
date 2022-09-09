@@ -13,7 +13,7 @@ data class ExtendedIngredient(
     val consistency: String,
 
     @SerializedName("image")
-    val image: String,
+    val image: String?,
 
     @SerializedName("name")
     val name: String,
