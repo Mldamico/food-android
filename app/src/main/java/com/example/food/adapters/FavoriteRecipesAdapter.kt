@@ -1,17 +1,18 @@
 package com.example.food.adapters
 
-import android.view.LayoutInflater
-import android.view.ViewGroup
+import android.view.*
+import androidx.fragment.app.FragmentActivity
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.example.food.R
 import com.example.food.data.database.entities.FavoritesEntity
 import com.example.food.databinding.FavoriteRecipesRowLayoutBinding
 import com.example.food.ui.fragments.favorites.FavoriteRecipesFragmentDirections
 import com.example.food.util.RecipesDiffUtil
 import kotlinx.android.synthetic.main.favorite_recipes_row_layout.view.*
 
-class FavoriteRecipesAdapter : RecyclerView.Adapter<FavoriteRecipesAdapter.MyViewHolder>() {
+class FavoriteRecipesAdapter(private val requireActivity: FragmentActivity) : RecyclerView.Adapter<FavoriteRecipesAdapter.MyViewHolder>(), ActionMode.Callback {
     private var favoriteRecipes = emptyList<FavoritesEntity>()
     class MyViewHolder(private val binding: FavoriteRecipesRowLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -42,6 +43,10 @@ class FavoriteRecipesAdapter : RecyclerView.Adapter<FavoriteRecipesAdapter.MyVie
             val action = FavoriteRecipesFragmentDirections.actionFavoriteRecipesFragmentToDetailsActivity(selectedRecipe.result)
             holder.itemView.findNavController().navigate(action)
         }
+        holder.itemView.favoriteRecipesRowLayout.setOnLongClickListener {
+            requireActivity.startActionMode(this)
+            true
+        }
     }
 
     override fun getItemCount(): Int {
@@ -53,5 +58,22 @@ class FavoriteRecipesAdapter : RecyclerView.Adapter<FavoriteRecipesAdapter.MyVie
         val diffUtilResult = DiffUtil.calculateDiff(favoriteRecipesDiffUtil)
         favoriteRecipes = newFavoriteRecipes
         diffUtilResult.dispatchUpdatesTo(this)
+    }
+
+    override fun onCreateActionMode(actionMode: ActionMode?, menu: Menu?): Boolean {
+        actionMode?.menuInflater?.inflate(R.menu.favorites_contextual_menus, menu)
+        return true
+    }
+
+    override fun onPrepareActionMode(actionMode: ActionMode?, menu: Menu?): Boolean {
+      return true
+    }
+
+    override fun onActionItemClicked(actionMode: ActionMode?, menu: MenuItem?): Boolean {
+        return true
+    }
+
+    override fun onDestroyActionMode(actionMode: ActionMode?) {
+
     }
 }
