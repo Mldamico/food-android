@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/backgroundColor"
     android:layout_height="match_parent"
     tools:context=".ui.DetailsActivity"
     android:id="@+id/detailsLayout"
@@ -12,6 +13,7 @@
         android:id="@+id/aooBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/actionBarBackgroundColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" >
