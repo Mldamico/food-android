@@ -3,6 +3,7 @@ package com.example.food.bindingAdapters
 import android.util.Log
 import android.view.View
 import android.widget.ProgressBar
+import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.example.food.data.database.entities.FoodJokeEntity
 import com.example.food.models.FoodJoke
@@ -52,6 +53,24 @@ class FoodJokeBinding {
                     }
                 }
                 null -> Log.d("Binding", "Bad binding")
+            }
+        }
+
+        @BindingAdapter("readApiResponse4", "readDatabase4", requireAll = true)
+        @JvmStatic
+        fun setErrorViewVisibility(view: View, apiResponse: NetworkResult<FoodJoke>?, database: List<FoodJokeEntity>?) {
+            if (database != null){
+                if (database.isEmpty()) {
+                    view.visibility = View.VISIBLE
+                    if (view is TextView){
+                        if(apiResponse != null){
+                            view.text = apiResponse.message.toString()
+                        }
+                    }
+                }
+            }
+            if (apiResponse is NetworkResult.Success){
+                view.visibility = View.INVISIBLE
             }
         }
     }
